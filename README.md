@@ -12,16 +12,16 @@ Anschließend können wir
 - den Zustand abfragen. (`+ Enabled{ get; set; }: bool`) (Standard ist ausgeschaltet: `enabled = false`)
 
 ```c#
-//Change Tick Event
+// change tick event
 tmrGameTick.Tick += new System.EventHandler(this.tmrGameTick_Tick);
 
-//Change Interval (in ms)
+// change interval (in ms)
 tmrGameTick.Interval = 10;
 
-//Enable or Disable Timer
+// enable or disable timer
 tmrGameTick.Start();
 tmrGameTick.Stop();
-//Is The Same As
+// is the same as
 tmrGameTick.Enabled = true;
 tmrGameTick.Enabled = false;
 ```
@@ -33,10 +33,34 @@ Ergänzen Sie hier die notwendigen Code-Ausschnitte, um zu zeigen, wie man es ma
 - Die folgende Liste kann gerne ergänzt werden :)
 
 ### Bewegung animieren
+Bewegung oder Animation ist nur die Änderung der Figur/Position in bestimmten Zeitabständen.
 
+d.h. einfach in bestimmten Zeitabständen (z.B. im Tick Event) die Position ändern.
+```c#
+// example:
+// every 0.1 seconds, the object moves to the left, making it appear to move.
+while (this.Position.X > 0) {
+    this.Position.X -= 100;
+    Thread.Sleep(100);
+    this.Refresh();
+}
+```
 ### Objekte mit Tasten steuern
-
+Es ist möglich Objekte mit Tasten zu steuern
+- Zuerst müssen wir ein `Ereigniss` ausführen, wenn eine Taste gedrückt wird. Dies ist mit dem `KeyDown` Event möglich, das unter den `Ereignissen` zu finden ist.
+- In der generierten Methode wird dann abgefragt, ob die gewünschte Taste gedrückt wurde.
+```c#
+// check that the up arrow key has been pressed and move up
+if (e.KeyCode == Keys.Up ) {
+    this.Position.Y += 100;
+}
+// Check that the down arrow key has been pressed and move down
+if (e.KeyCode == Keys.Down ) {
+    this.Position.Y -= 100;
+}
+```
 ### Verhindern, dass ein Spieler aus dem Bild läuft
+
 
 ### Spiel pausieren
 
