@@ -3,7 +3,7 @@ Eine Sammlung von Tipps und Tricks zum Thema Grafikprogrammierung mit GDI+.
 
 ## Klassen / Ereignisse
 ### Timer
-Ein Timer führt in regelmäßigen Abständen ein `Tick`-Event aus. Der [`System.Windows.Forms`.`Timer`](https://learn.microsoft.com/de-de/dotnet/api/system.windows.forms.timer?view=windowsdesktop-8.0&viewFallbackFrom=net-6.0) kann über die Toolbox auf die GUI gezogen werden. 
+Ein Timer führt in regelmäßigen `Intervalen` ein `Tick`-Event aus. Der [`System.Windows.Forms.Timer`](https://learn.microsoft.com/de-de/dotnet/api/system.windows.forms.timer?view=windowsdesktop-8.0&viewFallbackFrom=net-6.0) kann über die Toolbox auf die GUI gezogen werden. 
 
 Anschließend können wir 
 - die Zeit zwischen jedem `Tick`-Event einstellen (`+ Interval { get; set; }: int`) und
@@ -11,7 +11,20 @@ Anschließend können wir
 - stoppen (`+ Stop():void`) oder
 - den Zustand abfragen. (`+ Enabled{ get; set; }: bool`) (Standard ist ausgeschaltet: `enabled = false`)
 
+```c++
+//Change Tick Event
+tmrGameTick.Tick += new System.EventHandler(this.tmrGameTick_Tick);
 
+//Change Interval (in ms)
+tmrGameTick.Interval = 10;
+
+//Enable or Disable Timer
+tmrGameTick.Start();
+tmrGameTick.Stop();
+//Is The Same As
+tmrGameTick.Enabled = true;
+tmrGameTick.Enabled = false;
+```
 
 ## Tipps und Tricks
 Ergänzen Sie hier die notwendigen Code-Ausschnitte, um zu zeigen, wie man es macht. 
