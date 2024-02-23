@@ -11,7 +11,7 @@ Anschließend können wir
 - stoppen (`+ Stop():void`) oder
 - den Zustand abfragen. (`+ Enabled{ get; set; }: bool`) (Standard ist ausgeschaltet: `enabled = false`)
 
-```c++
+```c#
 //Change Tick Event
 tmrGameTick.Tick += new System.EventHandler(this.tmrGameTick_Tick);
 
